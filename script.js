@@ -7,7 +7,7 @@ async function buscarCodigo() {
     const urlCsv = `https://corsproxy.io/?${encodeURIComponent(urlApiOriginal)}`;
 
     try {
-    const respuesta = await fetch(urlApi);
+    const respuesta = await fetch(urlCsv);
     const data = await respuesta.json();
 
     if (data.error) {

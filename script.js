@@ -3,7 +3,7 @@ async function buscarCodigo() {
     const resultadosDiv = document.getElementById("resultados");
     resultadosDiv.innerHTML = ""; // Limpiar resultados anteriores
 
-    const urlCsv = 'https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRX-9kxzvaGlzDD1Y9C9TuogqOFGwLK-eIgzUi1BJ9GlkUpwA96QCJzU3Q4JFW2c7lH9rrgCeF-qkBE/pubhtml?gid=1778986479&single=true'; // Reemplaza con tu URL
+    const urlCsv = 'https://docs.google.com/spreadsheets/d/1WKrxmBf-9t8PHYhsj-6M3TuBgHCSqMXF03XQDpZfIyw/edit?gid=1487045021#gid=1487045021'; // Reemplaza con tu URL
     try {
         const respuesta = await fetch(urlCsv);
         const textoCsv = await respuesta.text();

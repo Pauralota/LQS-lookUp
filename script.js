@@ -7,24 +7,16 @@ async function buscarCodigo() {
     const urlCsv = `https://corsproxy.io/?${encodeURIComponent(urlApiOriginal)}`;
 
     try {
-        const respuesta = await fetch(urlCsv);
-        const textoCsv = await respuesta.text();
-        const filas = textoCsv.split('\n');
-        const datos = filas.map(fila => fila.split(','));
-		
-        let encontrado = false;
-        for (const fila of datos) {
-            if (fila[0] === codigo) {
-                encontrado = true;
-                resultadosDiv.innerHTML = `<p>Ubicacion: ${fila[1]}</p><p>Descripcion: ${fila[2]}</p>`;
-                break;
-            }
-        }
-        if (!encontrado) {
-            resultadosDiv.innerHTML = "<p>Codigo noN encontrado.</p>";
-        }
-    } catch (error) {
-        console.error("Error al obtener los datos:", error);
-        resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
+    const respuesta = await fetch(urlApi);
+    const data = await respuesta.json();
+
+    if (data.error) {
+        resultadosDiv.innerHTML = `<p>❌ ${data.error}</p>`;
+    } else {
+        resultadosDiv.innerHTML = `<p>✅ Fila: ${data.fila}</p><p>Ubicación: ${data.ubicacion}</p><p>Descripción: ${data.descripcion}</p>`;
     }
+} catch (error) {
+    console.error("Error al obtener los datos:", error);
+    resultadosDiv.innerHTML = "<p>🚫 Error al obtener los datos.</p>";
+}
 }

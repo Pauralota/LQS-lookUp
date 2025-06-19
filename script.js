@@ -3,7 +3,9 @@ async function buscarCodigo() {
     const resultadosDiv = document.getElementById("resultados");
     resultadosDiv.innerHTML = ""; // Limpiar resultados anteriores
 
-    const urlCsv = `https://script.google.com/macros/s/AKfycbws8VcpqPDMJik1lHDrYJGC8fdRaaMlOMXnZYUTiMusg06CiI1vp1Fnq_-On7TVjjAW/exec?codigo=${encodeURIComponent(codigo)}`;
+    const urlApiOriginal = `https://script.google.com/macros/s/AKfycbws8VcpqPDMJik1lHDrYJGC8fdRaaMlOMXnZYUTiMusg06CiI1vp1Fnq_-On7TVjjAW/exec?codigo=${encodeURIComponent(codigo)}`;
+    const urlCsv = `https://corsproxy.io/?${encodeURIComponent(urlApiOriginal)}`;
+
     try {
         const respuesta = await fetch(urlCsv);
         const textoCsv = await respuesta.text();

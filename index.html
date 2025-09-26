@@ -10,7 +10,11 @@
         <h1>LQS Spare lookUp</h1>
         <div class="search-box">
             <input type="text" id="codigoInput" placeholder="Introduce el codigo">
-            <button onclick="buscarCodigo()">LookUp</button>
+            <button id="btnBuscar">Buscar</button>
+
+            <script>
+            document.getElementById("btnBuscar").addEventListener("click", buscarCodigo);
+            </script>
         </div>
         <div id="resultados" class="resultados"></div>
     </div>

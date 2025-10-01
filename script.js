@@ -7,14 +7,24 @@ async function buscarCodigo() {
     try {
         const respuesta = await fetch(urlCsv);
         const textoCsv = await respuesta.text();
-        const filas = textoCsv.split('\n');
-        const datos = filas.map(fila => fila.split(','));
+
+		// Parsear con PapaParse
+        const parsed = Papa.parse(textoCsv, { header: false });
+        const datos = parsed.data;
+		
+        // const filas = textoCsv.split('\n');
+        // const datos = filas.map(fila => fila.split(','));
 		
         let encontrado = false;
         for (const fila of datos) {
             if (fila[0] === codigo) {
                 encontrado = true;
-                resultadosDiv.innerHTML = `<p><b>Encontrado!</b></p><p>Ubicacion: ${fila[3]}</p><p>Descripcion: ${fila[1]}</p><p>Máquina: ${fila[2]}</p><p>Cantidad: ${fila[4]}</p>`;
+                resultadosDiv.innerHTML = `
+				<p><b>Encontrado!</b></p>
+				<p>Ubicación: ${fila[3] ? fila[3].trim() : ''}</p>
+				<p>Descripcion: ${fila[1] ? fila[1].trim() : ''}</p>
+				<p>Máquina: ${fila[2] ? fila[2].trim() : ''}</p>
+				<p>Cantidad: ${fila[4] ? fila[4].trim() : ''}</p>
                 break;
             }
         }

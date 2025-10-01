@@ -9,7 +9,14 @@ async function buscarCodigo() {
         const textoCsv = await respuesta.text();
 
 		// Parsear con PapaParse
-        const parsed = Papa.parse(textoCsv, { header: false });
+        const parsed = Papa.parse(textoCsv, {
+		    header: false,       // no hay fila de encabezado
+		    skipEmptyLines: true, // ignora filas vacías
+		    dynamicTyping: false, // evita interpretar números automáticamente
+		    quoteChar: '"',      // reconoce comillas dobles
+		    delimiter: ",",      // el separador es coma
+		});
+		const datos = parsed.data;
         const datos = parsed.data;
 		
         // const filas = textoCsv.split('\n');

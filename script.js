@@ -45,7 +45,3 @@ async function buscarCodigo() {
         resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
     }
 }
-
-function limpiar(valor) {
-    return valor ? valor.trim().replace(/^"(.*)"$/, '$1') : '';
-}

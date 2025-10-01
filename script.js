@@ -14,7 +14,7 @@ async function buscarCodigo() {
         for (const fila of datos) {
             if (fila[0] === codigo) {
                 encontrado = true;
-                resultadosDiv.innerHTML = `<p><b>Encontrado!</b></p><p>Ubicacion: ${fila[4]}</p><p>Descripcion: ${fila[1]}</p><p>Máquina: ${fila[2]}</p>`;
+                resultadosDiv.innerHTML = `<p><b>Encontrado!</b></p><p>Ubicacion: ${fila[3]}</p><p>Descripcion: ${fila[1]}</p><p>Máquina: ${fila[2]}</p><p>Cantidad: ${fila[4]}</p>`;
                 break;
             }
         }

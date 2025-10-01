@@ -28,10 +28,10 @@ async function buscarCodigo() {
                 encontrado = true;
                 resultadosDiv.innerHTML = `
 				<p><b>Encontrado!</b></p>
-				<p>Ubicación: ${limpiar(fila[3]) ? limpiar(fila[3]).trim() : ''}</p>
-				<p>Descripcion: ${limpiar(fila[1]) ? limpiar(fila[1]).trim() : ''}</p>
-				<p>Máquina: ${limpiar(fila[2]) ? limpiar(fila[2]).trim() : ''}</p>
-				<p>Cantidad: ${limpiar(fila[4]) ? limpiar(fila[4]).trim() : ''}</p>
+				<p>Ubicación: ${fila[3] ? fila[3].trim() : ''}</p>
+				<p>Descripcion: ${fila[1] ? fila[1].trim() : ''}</p>
+				<p>Máquina: ${fila[2] ? fila[2].trim() : ''}</p>
+				<p>Cantidad: ${fila[4] ? fila[4].trim() : ''}</p>
                 break;
             }
         }

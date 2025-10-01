@@ -19,7 +19,6 @@ async function buscarCodigo() {
 		//});
 		
 		const datos = parsed.data;
-        const datos = parsed.data;
 		
         // const filas = textoCsv.split('\n');
         // const datos = filas.map(fila => fila.split(','));

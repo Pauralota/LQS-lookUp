@@ -29,7 +29,7 @@ async function buscarCodigo() {
             }
         }
         if (!encontrado) {
-            resultadosDiv.innerHTML = "<p>Codigo no encontrado.</p>";
+            resultadosDiv.innerHTML = "<p>Código no encontrado.</p>";
         }
     } catch (error) {
         console.error("Error al obtener los datos:", error);

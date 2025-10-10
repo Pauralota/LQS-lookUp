@@ -4,7 +4,8 @@ async function buscarCodigo() {
     resultadosDiv.innerHTML = ""; // Limpiar resultados anteriores
 
     const urlCsv = `https://docs.google.com/spreadsheets/d/e/2PACX-1vTnGbFqRCkn7AaKDgMQK3gCeQaLGvLqINj8L2N6kw83hX8_la5Em4SQupaFELc9qAkgDQ-uPiGvxVpx/pub?gid=1487045021&single=true&output=csv`; // Reemplaza con tu URL
-    try {
+    
+	try {
         const respuesta = await fetch(urlCsv);
         const textoCsv = await respuesta.text();
 
@@ -40,8 +41,9 @@ async function buscarCodigo() {
         if (!encontrado) {
             resultadosDiv.innerHTML = "<p>Código no encontrado.</p>";
         }
-	}   catch (error) {
-        console.error("Error al obtener los datos:", error);
-        resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
+		
+		}   catch (error) {
+        	console.error("Error al obtener los datos:", error);
+        	resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
     	}
 }

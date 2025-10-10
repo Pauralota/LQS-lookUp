@@ -25,7 +25,7 @@ async function buscarCodigo() {
 		
         let encontrado = false;
         for (const fila of datos) {
-            if (fila[0] === codigo) {
+            if (fila[0].trim() === codigo.trim()) {
                 encontrado = true;
                 resultadosDiv.innerHTML = `
 				<p><b>Encontrado!</b></p>
@@ -33,7 +33,8 @@ async function buscarCodigo() {
 				<p>Descripcion: ${fila[1] ? fila[1].trim() : ''}</p>
 				<p>Máquina: ${fila[2] ? fila[2].trim() : ''}</p>
 				<p>Cantidad: ${fila[4] ? fila[4].trim() : ''}</p>
-                break;
+				`;
+				break;
             }
         }
         if (!encontrado) {

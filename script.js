@@ -43,3 +43,4 @@ async function buscarCodigo() {
         console.error("Error al obtener los datos:", error);
         resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
     }
+}

@@ -40,7 +40,7 @@ async function buscarCodigo() {
         if (!encontrado) {
             resultadosDiv.innerHTML = "<p>Código no encontrado.</p>";
         }
-     	catch (error) {
+	}   catch (error) {
         console.error("Error al obtener los datos:", error);
         resultadosDiv.innerHTML = "<p>Error al obtener los datos.</p>";
     	}

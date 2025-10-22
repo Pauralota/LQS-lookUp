@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LQS spare lookup</title>
+    <title>LQS spare lookUp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>LQS Spare lookUp</h1>
+        <h1>LQS Spare LookUp</h1>
+
         <div class="search-box">
-            <input type="text" id="codigoInput" placeholder="Introduce el codigo">
-            <button onclick="buscarCodigo()">LookUp</button>
+            <input type="text" id="codigoInput" placeholder="Introduce el código (usa * como comodín)">
+            <input type="text" id="descripcionInput" placeholder="Texto en descripción (usa * como comodín)">
+            <button onclick="buscarCodigo()">Buscar</button>
         </div>
+
         <div id="resultados" class="resultados"></div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://pauralota.github.io/LQS-lookUp/script.js"></script>
 </body>

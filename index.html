@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>LQS spare lookUp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Búsqueda de Códigos</title>
+
+  <!-- Enlace al CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>LQS Spare LookUp</h1>
 
-        <div class="search-box">
-            <input type="text" id="codigoInput" placeholder="Introduce el código (usa * como comodín)">
-            <input type="text" id="descripcionInput" placeholder="Texto en descripción (usa * como comodín)">
-            <button onclick="buscarCodigo()">Buscar</button>
-        </div>
+  <h1>Buscador de Códigos</h1>
 
-        <div id="resultados" class="resultados"></div>
-    </div>
+  <div class="busqueda">
+    <input type="text" id="codigoInput" placeholder="Buscar código (usa * como comodín)">
+    <input type="text" id="descripcionInput" placeholder="Buscar descripción (usa * como comodín)">
+    <button onclick="buscarCodigo()">Buscar</button>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="https://pauralota.github.io/LQS-lookUp/script.js"></script>
+  <div id="resultados"></div>
+
+  <!-- Enlace al script -->
+  <script src="script.js"></script>
 </body>
 </html>

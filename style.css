@@ -103,7 +103,7 @@ tr:nth-child(even) {
 .app-header {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  padding: 10px 16px;
+  padding: 12px 18px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -112,7 +112,7 @@ tr:nth-child(even) {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -120,42 +120,45 @@ tr:nth-child(even) {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .logo {
-  height: 36px;
+  height: 54px;
   width: auto;
   object-fit: contain;
+  display: block;
+  transform: translateY(2px); /* Centra visualmente con el texto */
   transition: transform 0.2s ease;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(2px);
 }
 
 .title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  color: #333;
-  letter-spacing: 0.5px;
+  color: #222;
+  letter-spacing: 0.4px;
   margin: 0;
+  line-height: 1;             /* Alineación precisa con el logo */
 }
 
 /* ===== Responsividad ===== */
 @media (max-width: 600px) {
   .logo {
-    height: 28px;
+    height: 44px;
+    transform: translateY(1px);
   }
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .header-content {
-    flex-direction: row;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
   }
 }
 

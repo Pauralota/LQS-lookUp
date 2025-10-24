@@ -99,3 +99,64 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
+/* ===== Encabezado principal ===== */
+.app-header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ===== Responsividad ===== */
+@media (max-width: 600px) {
+  .logo {
+    height: 28px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .header-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+

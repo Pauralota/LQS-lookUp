@@ -33,7 +33,8 @@ async function buscarCodigo() {
       obtenerDatos(urlCsv1),
       obtenerDatos(urlCsv2)
     ]);
-
+    console.log("HOJA 1 RAW:", datos1.slice(0, 5)));
+    console.log("HOJA 2 RAW:", datos2.slice(0, 5)));
     const codigoRegex = codigo ? convertirWildcardARegex(codigo) : null;
     const descRegex = descripcion ? convertirWildcardARegex(descripcion) : null;
 
@@ -42,7 +43,6 @@ async function buscarCodigo() {
 
       // Hoja 1
       ...datos1
-        console.log("HOJA 2 RAW:", datos1.slice(0, 5)));
         .filter(fila => {
           const cod = String(fila[0] || "").trim();
           const desc = String(fila[1] || "").trim();
@@ -61,7 +61,6 @@ async function buscarCodigo() {
 
       // Hoja 2
       ...datos2
-          console.log("HOJA 2 RAW:", datos2.slice(0, 5));
         .filter(fila => {
           const cod = String(fila[0] || "").trim();
           const desc = String(fila[3] || "").trim();

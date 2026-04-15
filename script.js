@@ -1,11 +1,21 @@
 function convertirWildcardARegex(texto) {
   // Escapa TODOS los caracteres especiales de regex
   const escapado = texto.replace(/[-\/\\^$+?.()|[\]{}]/g, '\\$&');
-  
   // Luego convierte el * en comodín
   const regexTexto = escapado.replace(/\*/g, '.*');
-
   return new RegExp("^" + regexTexto + "$", "i");
+}
+
+async function obtenerDatos(urlCsv) {
+  const respuesta = await fetch(urlCsv);
+  const textoCsv = await respuesta.text();
+
+  const parsed = Papa.parse(textoCsv, {
+    header: false,
+    skipEmptyLines: true
+  });
+
+  return parsed.data.filter(row => row[0]);
 }
 
 async function buscarCodigo() {
@@ -15,7 +25,8 @@ async function buscarCodigo() {
   resultadosDiv.innerHTML = "";
 
   const urlCsv = `https://docs.google.com/spreadsheets/d/e/2PACX-1vTnGbFqRCkn7AaKDgMQK3gCeQaLGvLqINj8L2N6kw83hX8_la5Em4SQupaFELc9qAkgDQ-uPiGvxVpx/pub?gid=1487045021&single=true&output=csv`;
-
+  const urlCsv2 = `https://docs.google.com/spreadsheets/d/e/2PACX-1vTnGbFqRCkn7AaKDgMQK3gCeQaLGvLqINj8L2N6kw83hX8_la5Em4SQupaFELc9qAkgDQ-uPiGvxVpx/pub?gid=0&single=true&output=csv`;
+  
   try {
     const respuesta = await fetch(urlCsv);
     const textoCsv = await respuesta.text();

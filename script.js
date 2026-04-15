@@ -9,7 +9,10 @@ async function buscarCodigo() {
   try {
     const respuesta = await fetch(urlCsv);
     const textoCsv = await respuesta.text();
-    const parsed = Papa.parse(textoCsv, { header: false });
+    const parsed = Papa.parse(textoCsv, {
+        header: false,
+        skipEmptyLines: true
+      });
     const datos = parsed.data.filter(row => row.length > 1);
 
     // Expresiones regulares con soporte de asteriscos
@@ -19,13 +22,23 @@ async function buscarCodigo() {
     const descRegex = descripcion
       ? new RegExp(descripcion.replace(/\*/g, ".*"), "i")
       : null;
-
+    
+    console.log(datos.slice(0, 5));
     // Filtro de coincidencias
     const resultados = datos.filter(fila => {
-      const cumpleCodigo = codigoRegex ? codigoRegex.test(fila[0]?.trim()) : true;
-      const cumpleDescripcion = descRegex ? descRegex.test(fila[1]?.trim()) : true;
-      return cumpleCodigo && cumpleDescripcion;
-    });
+        const valorCodigo = String(fila[0] || "").trim();
+        const valorDescripcion = String(fila[1] || "").trim();
+      
+        const cumpleCodigo = codigo
+          ? valorCodigo.toLowerCase() === codigo.toLowerCase()
+          : true;
+      
+        const cumpleDescripcion = descripcion
+          ? valorDescripcion.toLowerCase().includes(descripcion.toLowerCase())
+          : true;
+      
+        return cumpleCodigo && cumpleDescripcion;
+      });
 
     // Mostrar resultados
     if (resultados.length === 0) {

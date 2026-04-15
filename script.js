@@ -91,6 +91,7 @@ async function buscarCodigo() {
             <th>Código</th>
             <th>Descripción</th>
             <th>Stock</th>
+            <th>Ubicacion</th>
             <th>Fecha</th>
             <th>Notas</th>
             <th>Origen</th>
@@ -105,6 +106,7 @@ async function buscarCodigo() {
           <td>${fila.codigo?.trim() || ''}</td>
           <td>${fila.descripcion?.trim() || ''}</td>
           <td>${fila.cantidad?.trim() || ''}</td>
+          <td>${fila.ubicacion?.trim() || ''}</td>
           <td>${fila.fecha?.trim() || ''}</td>
           <td>${fila.notas?.trim() || ''}</td>
           <td>${fila.origen}</td>

@@ -33,7 +33,7 @@ h1 {
 
 .busqueda {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
   gap: 10px;
   max-width: 500px;
   margin: 0 auto 20px;
@@ -48,6 +48,7 @@ h1 {
 
 input[type="text"] {
   flex: 1;
+  min-width: 0;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;

@@ -71,42 +71,76 @@ async function buscarCodigo() {
     }
 
     if (resultados.length === 1) {
-      const fila = resultados[0];
-      resultadosDiv.innerHTML = `
-        <p><b>Encontrado:</b></p>
-        <p>Código: ${fila[0]?.trim() || ''}</p>
-        <p>Descripción: ${fila[1]?.trim() || ''}</p>
-        <p>Máquina: ${fila[2]?.trim() || ''}</p>
-        <p>Ubicación: ${fila[3]?.trim() || ''}</p>
-        <p>Cantidad: ${fila[4]?.trim() || ''}</p>
-      `;
+      const resultados = [
+      // Hoja 1 (estructura original)
+      ...datos1
+        .filter(fila => {
+          const cod = String(fila[0] || "").trim();
+          const desc = String(fila[1] || "").trim();
+    
+          return (!codigoRegex || codigoRegex.test(cod)) &&
+                 (!descRegex || descRegex.test(desc));
+        })
+        .map(fila => ({
+          codigo: fila[0] || "",
+          descripcion: fila[1] || "",
+          maquina: fila[2] || "",
+          ubicacion: fila[3] || "",
+          cantidad: fila[4] || "",
+          origen: "Hoja 1"
+        })),
+    
+      // Hoja 2 (estructura nueva)
+      ...datos2
+        .filter(fila => {
+          const cod = String(fila[0] || "").trim();
+          const desc = String(fila[3] || "").trim();
+    
+          return (!codigoRegex || codigoRegex.test(cod)) &&
+                 (!descRegex || descRegex.test(desc));
+        })
+        .map(fila => ({
+          codigo: fila[0] || "",
+          descripcion: fila[3] || "",
+          maquina: "",              // no existe en esta hoja
+          ubicacion: "",            // no existe
+          cantidad: fila[4] || "",  // stock
+          fecha: fila[6] || "",
+          notas: fila[7] || "",
+          origen: "Hoja 2"
+        }))
+    ];
     } else {
       let tabla = `
-        <table>
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Descripción</th>
-              <th>Máquina</th>
-              <th>Ubicación</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
-      for (const fila of resultados) {
-        tabla += `
+      <table>
+        <thead>
           <tr>
-            <td>${fila[0]?.trim() || ''}</td>
-            <td>${fila[1]?.trim() || ''}</td>
-            <td>${fila[2]?.trim() || ''}</td>
-            <td>${fila[3]?.trim() || ''}</td>
-            <td>${fila[4]?.trim() || ''}</td>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Stock</th>
+            <th>Fecha</th>
+            <th>Notas</th>
+            <th>Origen</th>
           </tr>
-        `;
-      }
-      tabla += "</tbody></table>";
-      resultadosDiv.innerHTML = tabla;
+        </thead>
+        <tbody>
+    `;
+    
+    for (const fila of resultados) {
+      tabla += `
+        <tr>
+          <td>${fila.codigo?.trim() || ''}</td>
+          <td>${fila.descripcion?.trim() || ''}</td>
+          <td>${fila.cantidad?.trim() || ''}</td>
+          <td>${fila.fecha?.trim() || ''}</td>
+          <td>${fila.notas?.trim() || ''}</td>
+          <td>${fila.origen}</td>
+        </tr>
+      `;
+    }
+    
+    tabla += "</tbody></table>";
+    resultadosDiv.innerHTML = tabla;
     }
 
   } catch (error) {

@@ -25,9 +25,8 @@ async function buscarCodigo() {
     
     console.log(datos.slice(0, 10));
     // Filtro de coincidencias
-    console.log("Comparando:", fila[0], "con", codigo);
-    
     const resultados = datos.filter(fila => {
+        console.log("Comparando:", fila[0], "con", codigo);
         const valorCodigo = String(fila[0] || "").trim();
         const valorDescripcion = String(fila[1] || "").trim();
         

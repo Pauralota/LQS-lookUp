@@ -53,9 +53,10 @@ async function buscarCodigo() {
           codigo: fila[0] || "",
           descripcion: fila[1] || "",
           cantidad: fila[4] || "",
-          fecha: "",
-          notas: "",
-          origen: "clasificado LQS"
+          ubicacion: fila[3] || "",
+          fecha: fila[5] || "",
+          notas: fila[6] || "",
+          origen: "Clasif LQS"
         })),
 
       // Hoja 2
@@ -70,9 +71,10 @@ async function buscarCodigo() {
           codigo: fila[0] || "",
           descripcion: fila[3] || "",
           cantidad: fila[4] || "",
+          ubicacion: "n/a",
           fecha: fila[6] || "",
           notas: fila[7] || "",
-          origen: "Recup sin clasif."
+          origen: "Recup SIN clasif."
         }))
     ];
 

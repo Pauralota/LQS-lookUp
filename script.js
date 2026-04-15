@@ -42,13 +42,14 @@ async function buscarCodigo() {
 
       // Hoja 1
       ...datos1
+        console.log("HOJA 2 RAW:", datos1.slice(0, 5)));
         .filter(fila => {
           const cod = String(fila[0] || "").trim();
           const desc = String(fila[1] || "").trim();
           return (!codigoRegex || codigoRegex.test(cod)) &&
                  (!descRegex || descRegex.test(desc));
         })
-        console.log("found:", cod, "con", codigoRegex);
+        
         .map(fila => ({
           codigo: fila[0] || "",
           descripcion: fila[1] || "",
@@ -60,6 +61,7 @@ async function buscarCodigo() {
 
       // Hoja 2
       ...datos2
+          console.log("HOJA 2 RAW:", datos2.slice(0, 5));
         .filter(fila => {
           const cod = String(fila[0] || "").trim();
           const desc = String(fila[3] || "").trim();

@@ -48,6 +48,7 @@ async function buscarCodigo() {
           return (!codigoRegex || codigoRegex.test(cod)) &&
                  (!descRegex || descRegex.test(desc));
         })
+        console.log("found:", cod, "con", codigoRegex);
         .map(fila => ({
           codigo: fila[0] || "",
           descripcion: fila[1] || "",

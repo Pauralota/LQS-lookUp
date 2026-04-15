@@ -33,8 +33,7 @@ async function buscarCodigo() {
       obtenerDatos(urlCsv1),
       obtenerDatos(urlCsv2)
     ]);
-    console.log("HOJA 1 RAW:", datos1.slice(0, 5)));
-    console.log("HOJA 2 RAW:", datos2.slice(0, 5)));
+    
     const codigoRegex = codigo ? convertirWildcardARegex(codigo) : null;
     const descRegex = descripcion ? convertirWildcardARegex(descripcion) : null;
 

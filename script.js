@@ -1,3 +1,13 @@
+function convertirWildcardARegex(texto) {
+  // Escapa TODOS los caracteres especiales de regex
+  const escapado = texto.replace(/[-\/\\^$+?.()|[\]{}]/g, '\\$&');
+  
+  // Luego convierte el * en comodín
+  const regexTexto = escapado.replace(/\*/g, '.*');
+
+  return new RegExp("^" + regexTexto + "$", "i");
+}
+
 async function buscarCodigo() {
   const codigo = document.getElementById("codigoInput").value.trim();
   const descripcion = document.getElementById("descripcionInput").value.trim();
@@ -17,10 +27,10 @@ async function buscarCodigo() {
 
     // Expresiones regulares con soporte de asteriscos
     const codigoRegex = codigo
-      ? new RegExp("^" + codigo.replace(/\*/g, ".*") + "$", "i")
+      ? convertirWildcardARegex(codigo)
       : null;
     const descRegex = descripcion
-      ? new RegExp(descripcion.replace(/\*/g, ".*"), "i")
+      ? convertirWildcardARegex(descripcion)
       : null;
     
     console.log(datos.slice(0, 10));
@@ -29,7 +39,7 @@ async function buscarCodigo() {
         
         const valorCodigo = String(fila[0] || "").trim();
         const valorDescripcion = String(fila[1] || "").trim();
-        console.log("Comparando:", valorCodigo, "con", codigoRegex);
+        console.log("Comparando:", valorCodigo, "con", codigo);
         const cumpleCodigo = codigo
           ? valorCodigo.toLowerCase() === codigo.toLowerCase()
           : true;

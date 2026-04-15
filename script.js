@@ -39,7 +39,7 @@ async function buscarCodigo() {
         
         const valorCodigo = String(fila[0] || "").trim();
         const valorDescripcion = String(fila[1] || "").trim();
-        console.log("Comparando:", valorCodigo, "con", codigo);
+        console.log("Comparando2:", valorCodigo, "con", codigo);
         const cumpleCodigo = codigo
           ? valorCodigo.toLowerCase() === codigo.toLowerCase()
           : true;

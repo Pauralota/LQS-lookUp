@@ -36,20 +36,22 @@ async function buscarCodigo() {
     console.log(datos.slice(0, 10));
     // Filtro de coincidencias
     const resultados = datos.filter(fila => {
-        
-        const valorCodigo = String(fila[0] || "").trim();
-        const valorDescripcion = String(fila[1] || "").trim();
-        console.log("Comparando2:", valorCodigo, "con", codigo);
-        const cumpleCodigo = codigo
-          ? valorCodigo.toLowerCase() === codigo.toLowerCase()
-          : true;
-      
-        const cumpleDescripcion = descripcion
-          ? valorDescripcion.toLowerCase().includes(descripcion.toLowerCase())
-          : true;
-      
-        return cumpleCodigo && cumpleDescripcion;
-      });
+
+    const valorCodigo = String(fila[0] || "").trim();
+    const valorDescripcion = String(fila[1] || "").trim();
+  
+    console.log("Comparando:", valorCodigo, "con", codigoRegex);
+
+    const cumpleCodigo = codigoRegex
+      ? codigoRegex.test(valorCodigo)
+      : true;
+  
+    const cumpleDescripcion = descRegex
+      ? descRegex.test(valorDescripcion)
+      : true;
+  
+    return cumpleCodigo && cumpleDescripcion;
+    });
 
     // Mostrar resultados
     if (resultados.length === 0) {
